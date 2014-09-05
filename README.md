@@ -6,4 +6,6 @@ I'm not an expert in LaTeX by any means, so there's no guarantee that what I've 
 
 At any rate, I hope you'll find these resources useful.
 
-This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+
