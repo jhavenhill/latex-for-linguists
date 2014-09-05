@@ -1,0 +1,567 @@
+\documentclass{beamer}
+\usetheme{Berkeley}
+\usecolortheme{dolphin}
+
+\usepackage{tipa}
+\usepackage{qtree}
+\usepackage{ccicons}
+\usepackage{hyperref}
+
+\title{\LaTeX\ for Linguists}
+\institute{Graduate Linguistics Student Association\\Research Tool Workshop Series\\Georgetown University\\jeh241@georgetown.edu}
+\author{Jon Havenhill}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage
+\begin{flushright}\ccbyncsa\end{flushright}}
+
+\frame{\tableofcontents}
+
+
+\section{Introduction}
+\subsection{What is \LaTeX ?}
+
+\begin{frame}
+\frametitle{Some basic information}
+
+\begin{itemize}
+\item <1-> First, how do you pronounce \LaTeX ?
+
+\begin{itemize}
+\item Usually \textipa{[leItEk]} or \textipa{[lA:tEk]}
+\end{itemize}
+
+\item <2-> It's a typesetting system, not a word processor
+
+\item <3-> \LaTeX\ documents are written with markup code, which is then interpreted and compiled by the \TeX\ system
+
+\item <4-> It has a learning curve, but there are a number of advantages, which you will hopefully see\ldots
+
+\end{itemize}
+\end{frame}
+
+\subsection{The basics}
+
+%Structure
+\begin{frame}[fragile]
+\frametitle{The structure of a \LaTeX\ document}
+
+\begin{itemize}
+
+\item <1-> Every document must contain the following lines:
+
+\begin{verbatim}
+\documentclass{...}
+...
+\begin{document}
+...
+\end{document}
+\end{verbatim}
+\end{itemize}
+
+\end{frame}
+
+%Hello World
+\begin{frame}[fragile]
+\frametitle{Let's start with a basic document}
+
+\begin{verbatim}
+\documentclass{article}
+
+\begin{document}
+Hello world!
+\end{document}
+\end{verbatim}
+
+\end{frame}
+
+%Document Class
+\begin{frame}[fragile]
+\frametitle{\textbackslash documentclass\{\}}
+
+\begin{itemize}
+\item <1-> The document classes you are most likely to use are:
+
+\begin{itemize}
+\item \texttt{article} (for articles)
+\item \texttt{beamer} (for slideshows like this) 
+\end{itemize}
+
+\item <2-> The \textbackslash documentclass command can have options, which are specified as such:
+
+\begin{verbatim}
+\documentclass[10pt,a4paper,landscape]{article}
+\end{verbatim}
+
+\end{itemize}
+
+\end{frame}
+
+%Preamble
+\begin{frame}[fragile]
+\frametitle{The preamble}
+
+\begin{itemize}
+\item <1-> The preamble comes between `documentclass\{\}' and `begin\{document\}'
+\item <2-> Here, you list the packages you will be using, e.g.:
+
+\begin{verbatim}
+\documentclass{article}
+
+\usepackage{covington}
+\usepackage{qtree}
+\usepackage{tipa}
+
+\begin{document}
+...
+\end{verbatim}
+
+\item <3-> You can also define new commands
+
+\end{itemize}
+
+\end{frame}
+
+%Title
+\begin{frame}[fragile]
+\frametitle{Titles}
+
+\begin{itemize}
+\item <1-> A set of commands are available for creating titles and abstracts:
+
+\begin{verbatim}
+\title{...}
+\author{...}
+\date{...}
+\end{verbatim}
+
+\item <2-> These are inserted into the document with the \textbackslash maketitle command
+
+\end{itemize}
+\end{frame}
+
+%Title 2
+\begin{frame}[fragile]
+\frametitle{Titles}
+
+\begin{itemize}
+\item <1-> Let's add a title to our document:
+
+\begin{verbatim}
+\begin{document}
+\title{A sample \LaTeX document}
+\author{Your name here}
+\date{\today}
+\maketitle
+Hello world!
+\end{verbatim}
+
+\end{itemize}
+\end{frame}
+
+%Title 3
+\begin{frame}[fragile]
+\frametitle{Titles}
+
+\begin{itemize}
+\item <1-> And an abstract:
+
+\begin{verbatim}
+\maketitle
+
+\begin{abstract}
+Lorem ipsum dolor sit amet...
+\end{abstract}
+
+Hello world!
+
+\end{verbatim}
+
+\end{itemize}
+\end{frame}
+
+\section{Formatting}
+
+%Formatting
+\begin{frame}[fragile]
+\frametitle{Some basic text formatting}
+
+\begin{itemize}
+\item <1-> \texttt{\textbackslash section\{\}} and \texttt{\textbackslash subsection\{\}}
+
+\item <2-> \texttt{\textbackslash textit\{\}}, \texttt{\textbackslash textbf\{\}}, and \texttt{\textbackslash underline\{\}}
+
+\item <3-> subscript (T$_\text{def}$P) and superscript (a$^2$ + b$^2$ = c$^2$):
+\begin{verbatim}
+T$_\text{def}$P
+a$^2$ + b$^2$ = c$^2$
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\subsection{Fonts}
+%Font
+\begin{frame}[fragile]
+\frametitle{Changing the font}
+
+\begin{itemize}
+\item <1-> The \LaTeX font is called Computer Modern
+
+\item <2-> Typewriter font: \texttt{\textbackslash texttt\{\}}
+\begin{itemize}
+\item This will set the text in the brackets to monospace font
+\end{itemize}
+
+\item <3-> Times New Roman: \texttt{\textbackslash usepackage\{times\}}
+\begin{itemize}
+\item This will set the entire document to Times New Roman
+\end{itemize}
+
+\item <4-> Font size can be specified with a \texttt{\textbackslash documentclass} option, e.g., \texttt{[10pt], [11pt], [12pt]}
+\begin{itemize}
+\item This will set the entire document to that font size
+\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\subsection{Margins}
+%Margins/Spacing
+\begin{frame}[fragile]
+\frametitle{Margins and spacing}
+
+\begin{itemize}
+\item <1-> The default margins are designed for readability, but you may require 1 inch margins.
+\item Margins can be set using the \texttt{geometry} package:
+\begin{verbatim}
+\usepackage[margin=1.0in]{geometry}
+\end{verbatim}
+
+\item <2-> Line spacing can be set with the \texttt{setspace package}:
+\begin{verbatim}
+\usepackage{setspace}
+%\singlespacing
+\onehalfspacing
+%\doublespacing
+\end{verbatim}
+
+\end{itemize}
+\end{frame}
+
+%Miscellany
+\begin{frame}[fragile]
+\frametitle{Miscellaneous formatting issues}
+
+\begin{itemize}
+\item <1-> Footnotes can be added using the \texttt{footnote} command:
+\begin{verbatim}
+\footnote{Lorem ipsum dolor sit amet...}
+\end{verbatim}
+
+\item <2-> Quirks of \LaTeX:
+
+\begin{itemize}
+\item \# \$ \% \^\ \& \_ \{ \} \~\ \textbackslash\ are reserved characters---you must use a backslash in order to type them, e.g. \texttt{\textbackslash \&}
+\item LaTeX differentiates left and right quotes: ' and '' are right quotes, while left quotes are typed using the ` key (tilde key)
+\end{itemize}
+
+\item <3-> Accented characters are typed with special codes, e.g., \texttt{\textbackslash =o} = \=o, \texttt{\textbackslash o} = \o, \texttt{\textbackslash 'e} = \'e
+
+\item <4-> Comprehensive list of symbols: \url{http://mirrors.ibiblio.org/CTAN/info/symbols/comprehensive/symbols-a4.pdf}
+
+\end{itemize}
+\end{frame}
+
+
+\section{Lists, tables, pictures, etc.}
+
+\subsection{Lists}
+
+%Lists 1
+\begin{frame}[fragile]
+\frametitle{Lists and bullets}
+
+\begin{itemize}
+\item <1-> Numbered lists are introduced and ended with the \texttt{enumerate} environment:
+
+\begin{verbatim}
+\begin{enumerate}
+    \item{...}
+\end{enumerate}
+\end{verbatim}
+
+\item <2-> \texttt{\textbackslash item\{\}} encloses each item
+
+\item <3-> Bulleted lists are the same, except they use the \texttt{itemize} environment.
+
+\item <4-> Numbered and bulleted lists can be embedded within one another.
+
+\end{itemize}
+\end{frame}
+
+%Lists 2
+\begin{frame}[fragile]
+\frametitle{Lists and bullets}
+
+\begin{itemize}
+\item <1-> Which numbering system is used can be chosen with the \texttt{enumerate} package:
+
+\begin{verbatim}
+\usepackage{enumerate}
+...
+\begin{enumerate}[I.]
+    \item{...}
+\end{enumerate}
+\end{verbatim}
+
+\item <2-> Or, items can be given individual bullet symbols:
+
+\begin{verbatim}
+\usepackage{enumerate}
+...
+\begin{itemize}
+    \item[-]{...}
+    \item[+]{...}
+\end{itemize}
+\end{verbatim}
+
+\end{itemize}
+\end{frame}
+
+%Lists 3
+\begin{frame}[fragile]
+\frametitle{Lists and bullets}
+
+\begin{itemize}
+
+\item <1-> \texttt{\textbackslash setcounter\{enumi\}\{4\}} can be used to set the counter for numbered lists:
+
+\begin{verbatim}
+\usepackage{enumerate}
+...
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item{The fifth item}
+\end{enumerate}
+\end{verbatim}
+
+\item <2-> There are separate counters for each level of embedding: \texttt{enumi, enumii, enumiii, enumiv}
+
+\item <3-> Additional counters operate for sections, tables, pages, etc.
+
+\end{itemize}
+\end{frame}
+
+\subsection{Graphics}
+%Graphics
+\begin{frame}[fragile]
+\frametitle{Graphics}
+
+\begin{itemize}
+\item <1-> The \texttt{graphicx} package is used for inserting pictures
+
+\begin{verbatim}
+\usepackage{graphicx}
+...
+\begin{figure}[h]
+    \includegraphics{LabovGraph.pdf}
+\end{figure}
+\end{verbatim}
+
+\item <2-> Graphic width can be controlled with \texttt{[width=...]} option.
+\begin{itemize}
+\item It can be an absolute value (4in) or a relative value (.95\textbackslash textwidth)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%Graphics 2
+\begin{frame}[fragile]
+\frametitle{Graphics options}
+
+\begin{itemize}
+\item <1-> Some more graphics options:
+
+\begin{verbatim}
+\usepackage{graphicx}
+...
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=...]{VowelSpace.png}
+    \caption{...}
+    \label{...}
+\end{figure}
+\end{verbatim}
+
+\item <2-> \texttt{H} requires the package \texttt{float} and inserts a graphic in that exact spot---\texttt{h} will only attempt to put a graphic in that spot.
+\end{itemize}
+\end{frame}
+
+\subsection{References}
+%Cross-references
+\begin{frame}
+\frametitle{Cross references}
+
+\begin{itemize}
+\item <1-> \texttt{\textbackslash label\{...\}} is used to label objects for cross-reference.
+\item <2-> These objects can then be referred to with the \texttt{\textbackslash ref\{...\}} command.
+\item <3-> You can label graphics, tables, sections, pages, etc. 
+\end{itemize}
+\end{frame}
+
+\subsection{Tables}
+%Tables
+\begin{frame}[fragile]
+\frametitle{Tables}
+
+\begin{itemize}
+\item <1-> Tables are enclosed in the \texttt{tabular} environment.
+\begin{verbatim}
+\begin{tabular}{c|c|c}
+    1 & 2 & 3\\
+\end{tabular}
+\end{verbatim}
+\item <2-> \texttt{\&} separates cells and \texttt{\textbackslash\textbackslash} ends the row.
+\item <3-> \texttt{\{c|l|r\}} controls the alignment of the text in each column.
+\item <4-> Horizontal dividers are marked with \texttt{|} and horizontal dividers can be created with \texttt{line} between rows. 
+\end{itemize}
+\end{frame}
+
+%Tables 2
+\begin{frame}[fragile]
+\frametitle{Tables}
+
+\begin{itemize}
+\item <1-> Tables can be embedded in the \texttt{table} environment.
+\begin{verbatim}
+\begin{table}
+    \caption{...}
+    \label{table:...}
+    \begin{tabular}{c|c|c}
+    ...
+    \end{tabular}
+\begin{table}
+\end{verbatim}
+\item <2-> This allows you to add captions/titles and references.
+\end{itemize}
+\end{frame}
+
+\section{Linguistics}
+
+\subsection{tipa}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{tipa} package}
+\begin{itemize}
+\item <1-> It's pretty straightforward: IPA in LaTeX
+\item <2-> It looks like this:
+\begin{verbatim}
+\textipa{[D@ "k\super h\ae p\textcorner t\s{n}
+\~\ae nd\textcorner D@ "\t{dZ}\~En\*r@
+l wIl "p\r*{\*r}Ablij: goU:]}
+\end{verbatim}
+\item <3-> Which produces: \textipa{[D@ "k\super h\ae p\textcorner t\s{n} \~\ae nd\textcorner D@ "\t{dZ}\~En\*r@\textsuperimposetilde{l} wI\textsuperimposetilde{l} "p\r*{\*r}Ablij: goU:]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{\texttt{tipa} practice}
+\begin{itemize}
+\item Try typesetting: \textipa{[haU du aI meIk aI pi eI sImb@lz In leItEk]}
+\item Or: \textipa{[maI: "HUzb@\=*nSUd\textcorner \ae \r*v bOt\textcorner p\super h@t\super heI:RoU\r*z]}
+\end{itemize}
+\end{frame}
+
+%Covington
+\subsection{covington}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{covington} package}
+\begin{itemize}
+\item <1-> Covington introduces the \texttt{example} environment.
+\item This allows you to embed nearly anything in an environment with a typical linguistics citation number: (x)
+\item It looks like:
+\begin{verbatim}
+\begin{example}
+    \label{...}
+    \begin{table}
+    ...
+    \end{table}
+\end{example}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{covington} package}
+\begin{itemize}
+\item <1-> Glosses are introduced using the \texttt{\textbackslash gll} command.
+\item It looks like:
+\begin{verbatim}
+\begin{example}
+   \gll Der Mann, der Florian kennt.
+   The.\textsc{m.nom} man, who.\textsc{m.nom}...
+   \glt `The man who/that knows Florian.'
+   \glend
+\end{example}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{\texttt{covington} package}
+\begin{itemize}
+\item <1-> This code produces:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\textwidth]{covington.png}
+\end{figure}
+\item <2-> Lists can be embedded within the example environment.
+\item <3-> Examples can be labeled and cross-referenced.
+\item <4-> Use brackets to group multiple words, or empty brackets to skip words.
+\end{itemize}
+\end{frame}
+
+
+\subsection{qtree}
+
+\begin{frame}
+\frametitle{\texttt{qtree} package}
+\begin{itemize}
+\item <1-> qtree lets you make...trees!
+\item <2-> The code looks like this:
+\begin{verbatim}
+
+\end{verbatim}
+\item <3-> It's fairly straightforward once you get the hang of it.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{\texttt{qtree} package}
+\begin{itemize}
+\item <1-> The code on the last slide produces:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\textwidth]{QTree.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+
+\section{Resources}
+\begin{frame}
+\frametitle{\LaTeX\ resources}
+
+\begin{itemize}
+\item \url{http://en.wikibooks.org/wiki/LaTeX/}
+\item Twitter: @TeXtip
+\item LaTeX4Ling: \url{http://www.essex.ac.uk/linguistics/external/clmt/latex4ling/}
+\item Google (duh)
+\end{itemize}
+
+\end{frame}
+
+\end{document}
