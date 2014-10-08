@@ -9,7 +9,7 @@
 
 \title{\LaTeX\ for Linguists}
 \institute{Graduate Linguistics Student Association\\Research Tool Workshop Series\\Georgetown University\\jeh241@georgetown.edu}
-\author{Jon Havenhill}
+\author{Jonathan Havenhill}
 \date{\today}
 
 \begin{document}
@@ -17,13 +17,28 @@
 \frame{\titlepage
 \begin{flushright}\ccbyncsa\end{flushright}}
 
-\frame{\tableofcontents}
+\frame{\scriptsize\tableofcontents}
 
+\section*{Files for today}
+\begin{frame}[fragile]
+\frametitle{Files for today}
+\begin{itemize}
+	\item <1-> You should download the following files:
+	\item <1-> \url{github.com/jhavenhill/latex-for-linguists}
+	\item <2-> If you don't have \LaTeX\ installed, you should download it:
+	\begin{itemize}
+		\item <2-> MikTeX for Windows
+		\item <2-> MacTeX for Mac
+		\item <2-> Or, sign up for a free account at \url{writelatex.com}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
 
 \section{Introduction}
 \subsection{What is \LaTeX ?}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Some basic information}
 
 \begin{itemize}
@@ -87,9 +102,10 @@ Hello world!
 \begin{itemize}
 \item \texttt{article} (for articles)
 \item \texttt{beamer} (for slideshows like this) 
+\item \texttt{res} (for r\'esum\'es and CVs)
 \end{itemize}
 
-\item <2-> The \textbackslash documentclass command can have options, which are specified as such:
+\item <2-> The \texttt{\textbackslash documentclass} command can have options, which are specified as such:
 
 \begin{verbatim}
 \documentclass[10pt,a4paper,landscape]{article}
@@ -395,13 +411,13 @@ a$^2$ + b$^2$ = c$^2$
 \end{figure}
 \end{verbatim}
 
-\item <2-> \texttt{H} requires the package \texttt{float} and inserts a graphic in that exact spot---\texttt{h} will only attempt to put a graphic in that spot.
+\item <2-> \texttt{H} requires the package \texttt{float} and inserts a graphic in that exact spot---\texttt{h} will only attempt to put a graphic in that spot. \texttt{!htbp} allows a figure to be placed here \emph{h}, at the top \emph{t}, at the bottom \emph{b}, or on a float page \emph{p}.
 \end{itemize}
 \end{frame}
 
 \subsection{References}
 %Cross-references
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Cross references}
 
 \begin{itemize}
@@ -448,6 +464,33 @@ a$^2$ + b$^2$ = c$^2$
 \end{itemize}
 \end{frame}
 
+\subsection{Citations}
+
+\begin{frame}[fragile]
+\frametitle{natbib}   
+\begin{itemize}
+	\item <1-> \texttt{natbib} is a package for creating bibliographies and in-text citations.
+	\item <2-> It (and the built-in) citation system use a .bib file, which stores your bibliography
+	\item <3-> Programs like Mendeley can manage your .bib file automatically
+	\item <4-> You can specify which citation style you'd like using \texttt{\textbackslash bibliographystyle\{\ldots\}} and by specifying \texttt{unified} for linguistics, \texttt{apalike} for APA, \texttt{chicago} for Chicago style, etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{natbib}   
+\begin{itemize}
+	\item <1-> There are many ways to cite things:
+	\item <1-> \begin{itemize}
+			\item \texttt{\textbackslash citep\{\ldots\}} for (Author, Year)
+			\item \texttt{\textbackslash citet\{\ldots\}} for Author (Year)
+			\item \texttt{\textbackslash citep\{paper1,paper2\}} for (Author1, Year; Author2, Year)
+		\end{itemize}
+	\item <2-> Cheat sheet for citation commands: \url{http://merkel.zoneo.net/Latex/natbib.php}
+	\item <3-> Unified style sheet for linguistics: \url{https://linguistlist.org/pubs/tocs/JournalUnifiedStyleSheet2007.pdf}
+\end{itemize}
+
+\end{frame}
+
 \section{Linguistics}
 
 \subsection{tipa}
@@ -466,7 +509,7 @@ l wIl "p\r*{\*r}Ablij: goU:]}
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{\texttt{tipa} practice}
 \begin{itemize}
 \item Try typesetting: \textipa{[haU du aI meIk aI pi eI sImb@lz In leItEk]}
@@ -475,71 +518,106 @@ l wIl "p\r*{\*r}Ablij: goU:]}
 \end{frame}
 
 %Covington
-\subsection{covington}
+\subsection{gb4e}
 
 \begin{frame}[fragile]
-\frametitle{\texttt{covington} package}
+\frametitle{\texttt{gb4e} package}
 \begin{itemize}
-\item <1-> Covington introduces the \texttt{example} environment.
+\item <1-> gb4e introduces the \texttt{exe} environment.
 \item This allows you to embed nearly anything in an environment with a typical linguistics citation number: (x)
 \item It looks like:
 \begin{verbatim}
-\begin{example}
-    \label{...}
+\begin{exe}
+    \ex
     \begin{table}
     ...
     \end{table}
-\end{example}
+    \label{...}
+\end{exe}
 \end{verbatim}
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{\texttt{covington} package}
+\frametitle{\texttt{gb4e} package}
 \begin{itemize}
 \item <1-> Glosses are introduced using the \texttt{\textbackslash gll} command.
 \item It looks like:
 \begin{verbatim}
-\begin{example}
-   \gll Der Mann, der Florian kennt.
-   The.\textsc{m.nom} man, who.\textsc{m.nom}...
-   \glt `The man who/that knows Florian.'
-   \glend
-\end{example}
+\begin{exe}
+    \ex{\gll Mi griast der Bua, (der) wo aus Minga kummt.\\
+    me.\textsc{acc} greets the.\textsc{m.nom} boy who.\textsc{m.nom} that from Munich comes\\
+    \glt `The boy who comes from Munich greets me.'}
+\end{exe}
 \end{verbatim}
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{\texttt{covington} package}
+\begin{frame}[fragile]
+\frametitle{\texttt{gb4e} package}
 \begin{itemize}
 \item <1-> This code produces:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.75\textwidth]{covington.png}
+    \includegraphics[width=.75\textwidth]{gb4e.png}
 \end{figure}
-\item <2-> Lists can be embedded within the example environment.
-\item <3-> Examples can be labeled and cross-referenced.
-\item <4-> Use brackets to group multiple words, or empty brackets to skip words.
+\item <2-> Use curly brackets to group multiple words, or empty curly brackets to skip words.
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{\texttt{gb4e} package}
+\begin{itemize}
+\item <1-> Lists can be embedded within the example environment using the \texttt{xlist} environment:
+\begin{verbatim}
+\begin{exe}
+    \ex
+    \begin{xlist}
+    \ex{...}
+    \ex{...}
+    \ex{...}
+    \end{xlist}
+\end{exe}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{gb4e} package}
+\begin{itemize}
+\item <1-> Examples can be labeled and cross-referenced using the \texttt{\textbackslash label\{...\}} and \texttt{\textbackslash ref\{...\}} commands.
+\item <2-> The \texttt{\textbackslash label\{...\}} command must come \emph{after} the example:
+	\begin{verbatim}
+	   \ex{Mi griast der Bua, (der) wo
+	   aus Minga kummt.}\label{ex:MascNom}
+	\end{verbatim}
+\item <3->	Check out the \texttt{\textbackslash exr}, \texttt{\textbackslash exp}, and \texttt{\textbackslash exi} commands for other useful ways of labeling and referencing examples.
+\end{itemize}
+\end{frame}
 
 \subsection{qtree}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{\texttt{qtree} package}
 \begin{itemize}
 \item <1-> qtree lets you make...trees!
 \item <2-> The code looks like this:
 \begin{verbatim}
-
+\Tree [.DP [.D des ] [.$n$P
+\qroof{Oachkatzl}.$n$P [.CP
+\qroof{des}.DP [.C [.C wo ] 
+[.TP \qroof{$\langle des
+\rangle$}.DP [.T \qroof{$\langle
+des \rangle$ I gfangn hab}.$v$P T ] ] ] ] ] ]
 \end{verbatim}
 \item <3-> It's fairly straightforward once you get the hang of it.
+\begin{itemize}
+	\item[$\rightarrow$] It's basically standard syntactic bracketing
+\end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{\texttt{qtree} package}
 \begin{itemize}
 \item <1-> The code on the last slide produces:
@@ -547,19 +625,40 @@ l wIl "p\r*{\*r}Ablij: goU:]}
     \centering
     \includegraphics[width=.75\textwidth]{QTree.png}
 \end{figure}
+\item <2-> Try bracketing something yourself
 \end{itemize}
 \end{frame}
 
+\subsection{knitr}
+
+\begin{frame}[fragile]
+\frametitle{knitr}
+	\begin{itemize}
+		\item <1-> \texttt{http://yihui.name/knitr/}
+		\item <1-> knitr (an extension of Sweave) is a way to incorporate R code into your documents.
+		\item <2-> This allows you to include dynamically-generated tables, figures, and references.
+		\item <3-> The goal is transparent and reproducible research.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{knitr}
+\begin{itemize}
+	\item <1-> knitr documents can be written directly in RStudio, or in something like Sublime Text with the \texttt{SublimeKnitr} plugin.
+	\item <2-> Example:
+
+\end{itemize}
+\end{frame}
 
 \section{Resources}
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{\LaTeX\ resources}
 
 \begin{itemize}
 \item \url{http://en.wikibooks.org/wiki/LaTeX/}
 \item Twitter: @TeXtip
 \item LaTeX4Ling: \url{http://www.essex.ac.uk/linguistics/external/clmt/latex4ling/}
-\item Google (duh)
+\item Google (of course)
 \end{itemize}
 
 \end{frame}
