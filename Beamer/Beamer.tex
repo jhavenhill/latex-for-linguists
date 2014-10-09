@@ -202,12 +202,12 @@ Hello world!
 
 %Formatting
 \begin{frame}[fragile]
-\frametitle{Some basic text formatting}
+\frametitle{Some basic formatting}
 
 \begin{itemize}
 \item <1-> \texttt{\textbackslash section\{\}} and \texttt{\textbackslash subsection\{\}}
 
-\item <2-> \texttt{\textbackslash textit\{\}}, \texttt{\textbackslash textbf\{\}}, and \texttt{\textbackslash underline\{\}}
+\item <2-> \texttt{\textbackslash textit\{\}}, \texttt{\textbackslash textbf\{\}}, \texttt{\textbackslash underline\{\}}, \texttt{\textbackslash texttt\{\}}, and \texttt{\textbackslash textsc\{\}}
 
 \item <3-> subscript (T$_\text{def}$P) and superscript (a$^2$ + b$^2$ = c$^2$):
 \begin{verbatim}
@@ -225,17 +225,12 @@ a$^2$ + b$^2$ = c$^2$
 \begin{itemize}
 \item <1-> The \LaTeX font is called Computer Modern
 
-\item <2-> Typewriter font: \texttt{\textbackslash texttt\{\}}
-\begin{itemize}
-\item This will set the text in the brackets to monospace font
-\end{itemize}
-
-\item <3-> Times New Roman: \texttt{\textbackslash usepackage\{times\}}
+\item <2-> Times New Roman: \texttt{\textbackslash usepackage\{times\}}
 \begin{itemize}
 \item This will set the entire document to Times New Roman
 \end{itemize}
 
-\item <4-> Font size can be specified with a \texttt{\textbackslash documentclass} option, e.g., \texttt{[10pt], [11pt], [12pt]}
+\item <3-> Font size can be specified with a \texttt{\textbackslash documentclass} option, e.g., \texttt{[10pt], [11pt], [12pt]}
 \begin{itemize}
 \item This will set the entire document to that font size
 \end{itemize}
@@ -458,7 +453,7 @@ a$^2$ + b$^2$ = c$^2$
     \begin{tabular}{c|c|c}
     ...
     \end{tabular}
-\begin{table}
+\end{table}
 \end{verbatim}
 \item <2-> This allows you to add captions/titles and references.
 \end{itemize}
