@@ -4,8 +4,10 @@
 
 \usepackage{tipa}
 \usepackage{qtree}
+\usepackage{ot-tableau}
 \usepackage{ccicons}
 \usepackage{hyperref}
+\usepackage{pdfpages}
 
 \title{\LaTeX\ for Linguists}
 \institute{Graduate Linguistics Student Association\\Research Tool Workshop Series\\Georgetown University\\jeh241@georgetown.edu}
@@ -25,11 +27,11 @@
 \begin{itemize}
 	\item <1-> You should download the following files:
 	\item <1-> \url{github.com/jhavenhill/latex-for-linguists}
-	\item <2-> If you don't have \LaTeX\ installed, you should download it:
+	\item <1-> If you don't have \LaTeX\ installed, you should download it:
 	\begin{itemize}
-		\item <2-> MikTeX for Windows
-		\item <2-> MacTeX for Mac
-		\item <2-> Or, sign up for a free account at \url{writelatex.com}
+		\item <1-> MikTeX for Windows
+		\item <1-> MacTeX for Mac
+		\item <1-> Or, sign up for a free account at \url{writelatex.com}
 	\end{itemize}
 \end{itemize}
 
@@ -45,14 +47,14 @@
 \item <1-> First, how do you pronounce \LaTeX ?
 
 \begin{itemize}
-\item Usually \textipa{[leItEk]} or \textipa{[lA:tEk]}
+\item Usually \textipa{[leItEk]} or \textipa{[lA:tEk]}, not \textipa{[lA:tEks]}
 \end{itemize}
 
-\item <2-> It's a typesetting system, not a word processor
+\item <1-> It's a typesetting system, not a word processor
 
-\item <3-> \LaTeX\ documents are written with markup code, which is then interpreted and compiled by the \TeX\ system
+\item <1-> \LaTeX\ documents are written with markup code, which is then interpreted and compiled by the \TeX\ system
 
-\item <4-> It has a learning curve, but there are a number of advantages, which you will hopefully see\ldots
+\item <1-> It has a learning curve, but there are a number of advantages\ldots
 
 \end{itemize}
 \end{frame}
@@ -126,7 +128,7 @@ Hello world!
 \begin{verbatim}
 \documentclass{article}
 
-\usepackage{covington}
+\usepackage{gb4e}
 \usepackage{qtree}
 \usepackage{tipa}
 
@@ -275,16 +277,231 @@ a$^2$ + b$^2$ = c$^2$
 
 \begin{itemize}
 \item \# \$ \% \^\ \& \_ \{ \} \~\ \textbackslash\ are reserved characters---you must use a backslash in order to type them, e.g. \texttt{\textbackslash \&}
-\item LaTeX differentiates left and right quotes: ' and '' are right quotes, while left quotes are typed using the ` key (tilde key)
+\item LaTeX differentiates left and right quotes: ' and '' are right quotes, while left quotes are typed using the \`\ key (tilde key)
 \end{itemize}
 
 \item <3-> Accented characters are typed with special codes, e.g., \texttt{\textbackslash =o} = \=o, \texttt{\textbackslash o} = \o, \texttt{\textbackslash 'e} = \'e
 
-\item <4-> Comprehensive list of symbols: \url{http://mirrors.ibiblio.org/CTAN/info/symbols/comprehensive/symbols-a4.pdf}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Symbol}
+
+\end{frame}
+
+\section{Linguistics}
+
+\subsection{tipa}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{tipa} package}
+\begin{itemize}
+\item <1-> It's pretty straightforward: IPA in LaTeX
+\item <2-> It looks like this:
+\begin{verbatim}
+\textipa{[D@ "k\super h\ae p\textcorner t\s{n}
+\~\ae nd\textcorner D@ "\t{dZ}\~En\*r@
+l wIl "p\r*{\*r}Ablij: goU:]}
+\end{verbatim}
+\item <3-> Which produces: \textipa{[D@ "k\super h\ae p\textcorner t\s{n} \~\ae nd\textcorner D@ "\t{dZ}\~En\*r@\textsuperimposetilde{l} wI\textsuperimposetilde{l} "p\r*{\*r}Ablij: goU:]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{tipa} practice}
+\begin{itemize}
+\item Try typesetting: \textipa{[haU du aI meIk aI pi eI sImb@lz In leItEk]}
+\item Or: \textipa{[maI: "HUzb@\=*nSUd\textcorner \ae \r*v bOt\textcorner p\super h@t\super heI:RoU\r*z]}
+\end{itemize}
+\end{frame}
+
+%Covington
+\subsection{gb4e}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{gb4e} package}
+\begin{itemize}
+\item <1-> gb4e introduces the \texttt{exe} environment.
+\item This allows you to embed nearly anything in an environment with a typical linguistics citation number: (x)
+\item It looks like:
+\begin{verbatim}
+\begin{exe}
+    \ex
+    \begin{table}
+    ...
+    \end{table}
+    \label{...}
+\end{exe}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{gb4e} package}
+\begin{itemize}
+\item <1-> Glosses are introduced using the \texttt{\textbackslash gll} command.
+\item It looks like:
+\begin{verbatim}
+\begin{exe}
+    \ex{\gll Mi griast der Bua, (der) wo aus Minga kummt.\\
+    me.\textsc{acc} greets the.\textsc{m.nom} boy who.\textsc{m.nom} that from Munich comes\\
+    \glt `The boy who comes from Munich greets me.'}
+\end{exe}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{gb4e} package}
+\begin{itemize}
+\item <1-> This code produces:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\textwidth]{gb4e.png}
+\end{figure}
+\item <2-> Use curly brackets to group multiple words, or empty curly brackets to skip words.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{gb4e} package}
+\begin{itemize}
+\item <1-> Lists can be embedded within the example environment using the \texttt{xlist} environment:
+\begin{verbatim}
+\begin{exe}
+    \ex
+    \begin{xlist}
+    \ex{...}
+    \ex{...}
+    \ex{...}
+    \end{xlist}
+\end{exe}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{gb4e} package}
+\begin{itemize}
+\item <1-> Examples can be labeled and cross-referenced using the \texttt{\textbackslash label\{...\}} and \texttt{\textbackslash ref\{...\}} commands.
+\item <2-> The \texttt{\textbackslash label\{...\}} command must come \emph{after} the example:
+	\begin{verbatim}
+	   \ex{Mi griast der Bua, (der) wo
+	   aus Minga kummt.}\label{ex:MascNom}
+	\end{verbatim}
+\item <3->	Check out the \texttt{\textbackslash exr}, \texttt{\textbackslash exp}, and \texttt{\textbackslash exi} commands for other useful ways of labeling and referencing examples.
+\end{itemize}
+\end{frame}
+
+\subsection{qtree}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{qtree} package}
+\begin{itemize}
+\item <1-> qtree lets you make...trees
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\textwidth]{QTree.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{qtree} package}
+\begin{itemize}
+\item <1-> The code looks like this:
+\begin{verbatim}
+\Tree [.DP [.D des ] [.$n$P
+\qroof{Oachkatzl}.$n$P [.CP
+\qroof{des}.DP [.C [.C wo ] 
+[.TP \qroof{$\langle des
+\rangle$}.DP [.T \qroof{$\langle
+des \rangle$ I gfangn hab}.$v$P T ] ] ] ] ] ]
+\end{verbatim}
+\item <2-> It's fairly straightforward once you get the hang of it.
+\begin{itemize}
+    \item[$\rightarrow$] It's more or less typical syntactic bracketing
+\end{itemize}
+\item <2-> Try bracketing something yourself
+\end{itemize}
+\end{frame}
+
+\subsection{ot-tableau}
+
+\begin{frame}[fragile]
+    \frametitle{\texttt{ot-tableau} package}
+    \begin{center}
+    \begin{tableau}{c:c|c}
+    \inp{\ips{ri-aSO}} \const{*VV} \const{Dep} \const{Max}
+    \cand{ri-aSO} \vio{*!} \vio{} \vio{}
+    \cand[\Optimal]{r-aSO} \vio{} \vio{} \vio{*}
+    \cand{ri-jaSO} \vio{} \vio{!*} \vio{}
+    \end{tableau}
+    \\
+    \vspace{2\baselineskip}
+    Vowel deletion in Yoruba
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\texttt{ot-tableau} package}
+
+    \begin{verbatim}
+\begin{tableau}{c:c|c}
+  \inp{\ips{ri-aSO}}     \const{*VV}    \const{Max} \const{Dep}
+  \cand{ri-aSO}          \vio{*!}       \vio{}      \vio{}
+  \cand[\Optimal]{r-aSO} \vio{}         \vio{}      \vio{*}
+  \cand{ri-jaSO}         \vio{}         \vio{!*}    \vio{}
+\end{tableau}
+    \end{verbatim}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\texttt{ot-tableau} package}
+
+    \begin{itemize}
+        \item What you need to know:
+        \begin{itemize}
+            \item 
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\subsection{knitr}
+\begin{frame}[fragile]
+\frametitle{knitr}
+	\begin{itemize}
+		\item <1-> \texttt{http://yihui.name/knitr/}
+		\item <1-> knitr (an extension of Sweave) is a way to incorporate R code into your documents.
+		\item <2-> This allows you to include dynamically-generated tables, figures, and references.
+		\item <3-> The goal is transparent and reproducible research.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{knitr}
+\begin{itemize}
+	\item <1-> knitr documents can be written directly in RStudio, or in something like Sublime Text with the \texttt{SublimeKnitr} plugin.
+	\item <2-> Example:
 
 \end{itemize}
 \end{frame}
 
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{knitrbeamer.pdf}
+}
+
+\begin{frame}[fragile]
+\frametitle{knitr}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{knitr.png}
+\end{center}
+\end{frame}
 
 \section{Lists, tables, pictures, etc.}
 
@@ -464,185 +681,26 @@ a$^2$ + b$^2$ = c$^2$
 \begin{frame}[fragile]
 \frametitle{natbib}   
 \begin{itemize}
-	\item <1-> \texttt{natbib} is a package for creating bibliographies and in-text citations.
-	\item <2-> It (and the built-in) citation system use a .bib file, which stores your bibliography
-	\item <3-> Programs like Mendeley can manage your .bib file automatically
-	\item <4-> You can specify which citation style you'd like using \texttt{\textbackslash bibliographystyle\{\ldots\}} and by specifying \texttt{unified} for linguistics, \texttt{apalike} for APA, \texttt{chicago} for Chicago style, etc.
+    \item <1-> \texttt{natbib} is a package for creating bibliographies and in-text citations.
+    \item <2-> It (and the built-in) citation system use a .bib file, which stores your bibliography
+    \item <3-> Programs like Mendeley can manage your .bib file automatically
+    \item <4-> You can specify which citation style you'd like using \texttt{\textbackslash bibliographystyle\{\ldots\}} and by specifying \texttt{unified} for linguistics, \texttt{apalike} for APA, \texttt{chicago} for Chicago style, etc.
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{natbib}   
 \begin{itemize}
-	\item <1-> There are many ways to cite things:
-	\item <1-> \begin{itemize}
-			\item \texttt{\textbackslash citep\{\ldots\}} for (Author, Year)
-			\item \texttt{\textbackslash citet\{\ldots\}} for Author (Year)
-			\item \texttt{\textbackslash citep\{paper1,paper2\}} for (Author1, Year; Author2, Year)
-		\end{itemize}
-	\item <2-> Cheat sheet for citation commands: \url{http://merkel.zoneo.net/Latex/natbib.php}
-	\item <3-> Unified style sheet for linguistics: \url{https://linguistlist.org/pubs/tocs/JournalUnifiedStyleSheet2007.pdf}
+    \item <1-> There are many ways to cite things:
+    \item <1-> \begin{itemize}
+            \item \texttt{\textbackslash citep\{\ldots\}} for (Author, Year)
+            \item \texttt{\textbackslash citet\{\ldots\}} for Author (Year)
+            \item \texttt{\textbackslash citep\{paper1,paper2\}} for (Author1, Year; Author2, Year)
+        \end{itemize}
+    \item <2-> Cheat sheet for citation commands: \url{http://merkel.zoneo.net/Latex/natbib.php}
+    \item <3-> Unified style sheet for linguistics: \url{https://linguistlist.org/pubs/tocs/JournalUnifiedStyleSheet2007.pdf}
 \end{itemize}
 
-\end{frame}
-
-\section{Linguistics}
-
-\subsection{tipa}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{tipa} package}
-\begin{itemize}
-\item <1-> It's pretty straightforward: IPA in LaTeX
-\item <2-> It looks like this:
-\begin{verbatim}
-\textipa{[D@ "k\super h\ae p\textcorner t\s{n}
-\~\ae nd\textcorner D@ "\t{dZ}\~En\*r@
-l wIl "p\r*{\*r}Ablij: goU:]}
-\end{verbatim}
-\item <3-> Which produces: \textipa{[D@ "k\super h\ae p\textcorner t\s{n} \~\ae nd\textcorner D@ "\t{dZ}\~En\*r@\textsuperimposetilde{l} wI\textsuperimposetilde{l} "p\r*{\*r}Ablij: goU:]}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{tipa} practice}
-\begin{itemize}
-\item Try typesetting: \textipa{[haU du aI meIk aI pi eI sImb@lz In leItEk]}
-\item Or: \textipa{[maI: "HUzb@\=*nSUd\textcorner \ae \r*v bOt\textcorner p\super h@t\super heI:RoU\r*z]}
-\end{itemize}
-\end{frame}
-
-%Covington
-\subsection{gb4e}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{gb4e} package}
-\begin{itemize}
-\item <1-> gb4e introduces the \texttt{exe} environment.
-\item This allows you to embed nearly anything in an environment with a typical linguistics citation number: (x)
-\item It looks like:
-\begin{verbatim}
-\begin{exe}
-    \ex
-    \begin{table}
-    ...
-    \end{table}
-    \label{...}
-\end{exe}
-\end{verbatim}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{gb4e} package}
-\begin{itemize}
-\item <1-> Glosses are introduced using the \texttt{\textbackslash gll} command.
-\item It looks like:
-\begin{verbatim}
-\begin{exe}
-    \ex{\gll Mi griast der Bua, (der) wo aus Minga kummt.\\
-    me.\textsc{acc} greets the.\textsc{m.nom} boy who.\textsc{m.nom} that from Munich comes\\
-    \glt `The boy who comes from Munich greets me.'}
-\end{exe}
-\end{verbatim}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{gb4e} package}
-\begin{itemize}
-\item <1-> This code produces:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\textwidth]{gb4e.png}
-\end{figure}
-\item <2-> Use curly brackets to group multiple words, or empty curly brackets to skip words.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{gb4e} package}
-\begin{itemize}
-\item <1-> Lists can be embedded within the example environment using the \texttt{xlist} environment:
-\begin{verbatim}
-\begin{exe}
-    \ex
-    \begin{xlist}
-    \ex{...}
-    \ex{...}
-    \ex{...}
-    \end{xlist}
-\end{exe}
-\end{verbatim}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{gb4e} package}
-\begin{itemize}
-\item <1-> Examples can be labeled and cross-referenced using the \texttt{\textbackslash label\{...\}} and \texttt{\textbackslash ref\{...\}} commands.
-\item <2-> The \texttt{\textbackslash label\{...\}} command must come \emph{after} the example:
-	\begin{verbatim}
-	   \ex{Mi griast der Bua, (der) wo
-	   aus Minga kummt.}\label{ex:MascNom}
-	\end{verbatim}
-\item <3->	Check out the \texttt{\textbackslash exr}, \texttt{\textbackslash exp}, and \texttt{\textbackslash exi} commands for other useful ways of labeling and referencing examples.
-\end{itemize}
-\end{frame}
-
-\subsection{qtree}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{qtree} package}
-\begin{itemize}
-\item <1-> qtree lets you make...trees!
-\item <2-> The code looks like this:
-\begin{verbatim}
-\Tree [.DP [.D des ] [.$n$P
-\qroof{Oachkatzl}.$n$P [.CP
-\qroof{des}.DP [.C [.C wo ] 
-[.TP \qroof{$\langle des
-\rangle$}.DP [.T \qroof{$\langle
-des \rangle$ I gfangn hab}.$v$P T ] ] ] ] ] ]
-\end{verbatim}
-\item <3-> It's fairly straightforward once you get the hang of it.
-\begin{itemize}
-	\item[$\rightarrow$] It's basically standard syntactic bracketing
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{\texttt{qtree} package}
-\begin{itemize}
-\item <1-> The code on the last slide produces:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\textwidth]{QTree.png}
-\end{figure}
-\item <2-> Try bracketing something yourself
-\end{itemize}
-\end{frame}
-
-\subsection{knitr}
-
-\begin{frame}[fragile]
-\frametitle{knitr}
-	\begin{itemize}
-		\item <1-> \texttt{http://yihui.name/knitr/}
-		\item <1-> knitr (an extension of Sweave) is a way to incorporate R code into your documents.
-		\item <2-> This allows you to include dynamically-generated tables, figures, and references.
-		\item <3-> The goal is transparent and reproducible research.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{knitr}
-\begin{itemize}
-	\item <1-> knitr documents can be written directly in RStudio, or in something like Sublime Text with the \texttt{SublimeKnitr} plugin.
-	\item <2-> Example:
-
-\end{itemize}
 \end{frame}
 
 \section{Resources}
