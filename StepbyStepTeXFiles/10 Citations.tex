@@ -9,6 +9,12 @@
 \usepackage{graphicx}
 \usepackage{float}
 
+\usepackage{tipa}
+\usepackage{qtree}
+\usepackage{gb4e}
+
+\usepackage{natbib}
+
 \begin{document}
 \title{This is a sample LaTeX document}
 \author{You\\\texttt{netid@georgetown.edu}}
@@ -28,6 +34,56 @@ Vivamus accumsan eget nisi \textit{consectetur consequat}. Phasellus vitae cursu
 \subsection{Some more words}
 
 \underline{In ligula felis}, dictum in lacus in, lacinia laoreet nunc. Vestibulum mollis arcu viverra tincidunt tincidunt. Proin pulvinar lacinia eros, eget pulvinar lectus tempor id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum eu neque at egestas. Donec convallis, est eu consectetur posuere, nisl massa porttitor nunc, nec laoreet ante mauris quis lectus. Suspendisse elit enim, cursus sed scelerisque et, condimentum at justo. Proin sed fermentum dolor. Vivamus nec rutrum nisi. Vestibulum vehicula felis nec neque pretium blandit. Nullam dignissim ante nisl, at rutrum diam pellentesque faucibus. Nam in luctus sem. Vivamus ultricies tortor hendrerit egestas varius. Etiam mattis sagittis porttitor\footnote{Fusce volutpat diam vel cursus lacinia. Ut nec dolor sem. Nunc mi magna, dapibus quis est et, consequat ornare eros. Integer hendrerit molestie eros quis fringilla. Morbi vitae ornare leo, non viverra purus. Pellentesque eu mauris eget nunc mollis auctor et eget libero. In hac habitasse platea dictumst.}.
+
+
+\section{Linguistics packages}
+
+\subsection{tipa}
+
+Duis iaculis justo in lacus convallis, non tristique urna mattis. Mauris porta nisl quis neque ornare, et dapibus dui consectetur. Phasellus sed tempor ante. Aliquam adipiscing ante arcu, id egestas augue imperdiet vitae.
+
+``Would you meet me at the station at five?'':
+
+\textipa{wUd ju mi:t mi \ae t D@ "steIS@n \ae t faIv}
+
+\textipa{wUZu: mi:Pmi: \ae P D@ "steIS@n \ae:P faiv}
+
+
+\subsection{gb4e}
+
+Donec pellentesque, tellus a adipiscing tincidunt, urna justo viverra enim, ut scelerisque mauris ipsum porta turpis. Donec et leo ipsum. Sed laoreet lacus a augue ultricies vehicula. Aliquam faucibus pretium dolor, sollicitudin lobortis lectus sodales ut.
+
+\begin{exe}
+\ex \label{standardRel}
+\underline{Standard German}
+    \begin{xlist}
+        \ex[]{\gll Der Mann, \textbf{der} aus M\"unchen kommt, gr\"u\ss t mich.\\
+        the.\textsc{m.nom} man who.\textsc{m.nom} from Munich comes greets me\\
+        \glt `The man who comes from Munich greets me.'}\label{standardRelMasc}
+        
+        \ex[]{\gll Die Frau, \textbf{die} zu Hause ist, liest gerne.\\
+        the.\textsc{f.nom} woman who.\textsc{f.nom} at home is, reads gladly\\
+        \glt `The woman who is at home reads gladly.'}\label{standardRelFem}
+        
+        \ex[*]{\gll Der Junge, \underline{\hspace{2em}} Max kennt, ist ein cooler Typ.\\
+        the.\textsc{m.nom} boy {} Max knows is a cool dude\\
+        \glt Intended: `The boy Max knows is a cool dude.'}\label{standardRelDPron}
+        
+        \ex[*]{\gll Das M\"adchen, das dass/was ein neues Auto gekauft hat, f\"ahrt zu schnell.\\
+        the.\textsc{n.nom} girl who.\textsc{n.nom} that/what a new car bought has drives too fast\\
+        \glt Intended: `The girl who bought a new car drives too fast.'}\label{standardRelComp}
+    \end{xlist}
+\end{exe}
+
+\subsection{qtree}
+
+Pellentesque vitae sollicitudin arcu, eget porttitor erat. Curabitur vel tristique sapien. Phasellus nec vehicula eros, vitae scelerisque elit. In hac habitasse platea dictumst. Praesent iaculis sodales augue, eget vulputate metus vestibulum vitae. In commodo egestas dui et bibendum. Nullam eu arcu mi. Morbi vitae consectetur magna, at scelerisque nibh. Reference to (\ref{tree}):
+
+\begin{exe}
+\ex
+\Tree [.S This [.VP [.V is ] \qroof{a simple tree}.NP ] ]
+\label{tree}
+\end{exe}
 
 \section{How about some lists?}
 
@@ -85,5 +141,32 @@ Figure~\ref{fig:simulation}. Nulla porta est sed justo varius, et suscipit dolor
   \label{fig:simulation}
 \end{figure}
 
+\section{Tables and such}
+
+Nullam turpis enim, molestie non purus et, condimentum pellentesque quam. Vestibulum molestie augue id lacus varius mattis. Donec nec placerat elit. Suspendisse a nibh euismod, pretium felis sit amet, sagittis ipsum. Cras lorem leo, tristique rutrum velit id, bibendum venenatis mi. Mauris hendrerit a quam id pulvinar. Aliquam id lacinia velit. Aenean ac elit non ante pellentesque commodo. Pellentesque in cursus tellus, eget commodo augue. Duis vel egestas mi. Duis ut nisi nec sapien pulvinar eleifend sit amet et urna. Nam pharetra luctus fermentum Table~\ref{tab:german}.
+
+\begin{table}[H]
+\caption{German relative pronouns}
+\label{tab:german}
+\centering
+\begin{tabular}{c||c|c|c|c}
+& Masculine & Feminine & Neuter & Plural\\
+\hline \hline
+Nominative & der & die & das & die\\
+\hline
+Accusative & den & die & das & die\\
+\hline
+Dative & dem & der & dem & denen\\
+\hline
+Genitive & dessen & deren & dessen & deren\\
+\end{tabular}
+\end{table}
+
+\section{Citations with natbib}
+
+Duis iaculis justo in lacus convallis, non tristique urna mattis. Mauris porta nisl quis neque ornare, et dapibus dui consectetur \cite{Halle1997}. \citet{labov1969} hasellus sed tempor ante. Aliquam adipiscing ante arcu, id egestas augue imperdiet vitae. Donec pellentesque, tellus a adipiscing tincidunt, urna justo viverra enim, ut scelerisque mauris ipsum porta turpis. Donec et leo ipsum \cite{chomsky1998,chomsky2001}. Sed laoreet lacus a augue ultricies vehicula \cite[cf.][p.~402]{mcfadden2004}. Aliquam faucibus pretium dolor, sollicitudin lobortis lectus sodales ut.
+
+\bibliographystyle{unified}
+\bibliography{samplebibliography.bib}
 
 \end{document}
